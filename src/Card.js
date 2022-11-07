@@ -1,6 +1,6 @@
 import './Card.css';
 
-export default function Card({ card, handleChoice, props }) {
+export default function Card({ card, handleChoice }) {
 
   const handleClick = () => {
     handleChoice(card)
@@ -8,10 +8,10 @@ export default function Card({ card, handleChoice, props }) {
 
   return (
     <div className="Card">
-      <div style={{height:'100px', width:'75px', backgroundColor:'black', borderStyle:'solid', borderColor:'red'}}
-             onClick={handleClick}></div>
-      <div style={{height:'100px', width:'75px', backgroundColor:'lightblue', borderStyle:'solid', borderColor:'red'}}
-           onClick={handleClick}></div>
+      <div style={{ height: '100px', width: '75px', backgroundColor: 'black', borderStyle: 'solid', borderColor: 'red' }}
+        onClick={handleClick}></div>
+      <div style={{ height: '100px', width: '75px', backgroundColor: 'lightblue', borderStyle: 'solid', borderColor: 'red' }}
+        onClick={handleClick}>{card.src}</div>
     </div>
   )
 }

@@ -2,8 +2,11 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import Card from './Card'
 
-
-const cardValues = ["A", "B", "C", "D"];
+const cardValues = [{ "src": "A", matched: false },
+{ "src": "B", matched: false },
+{ "src": "C", matched: false },
+{ "src": "D", matched: false }
+];
 
 function App() {
   // Sets card and turns state
@@ -34,14 +37,23 @@ function App() {
     if (choiceOne && choiceTwo) {
 
       if (choiceOne.src === choiceTwo.src) {
-        console.log('Matching cards')
+        setCards(prevCards => {
+          return prevCards.map(card => {
+            if (card.src === choiceOne.src) {
+              return { ...card, matched: true }
+            } else {
+              return card
+            }
+          })
+        })
         resetTurn()
       } else {
-        console.log("Not a match")
         resetTurn()
       }
     }
   }, [choiceOne, choiceTwo])
+
+  console.log(cards)
 
   // Resets choices and increases number of turns
   const resetTurn = () => {
