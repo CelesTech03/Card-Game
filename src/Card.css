@@ -4,12 +4,12 @@
     height: 100px;
     width: 75px;
     border: solid 2px red;
-  }
-  
-  .back {
+}
+
+.back {
     display: block;
     background-color: black;
     height: 100px;
     width: 75px;
     border: solid 2px red;
-  }
+}
