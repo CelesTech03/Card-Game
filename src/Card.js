@@ -1,17 +1,17 @@
 import './Card.css';
 
-export default function Card({ card, handleChoice }) {
+export default function Card({ card, handleChoice, flipped }) {
 
   const handleClick = () => {
     handleChoice(card)
   }
 
   return (
-    <div className="Card">
-      <div style={{ height: '100px', width: '75px', backgroundColor: 'black', borderStyle: 'solid', borderColor: 'red' }}
-        onClick={handleClick}></div>
-      <div style={{ height: '100px', width: '75px', backgroundColor: 'lightblue', borderStyle: 'solid', borderColor: 'red' }}
-        onClick={handleClick}>{card.src}</div>
+    <div className="card">
+      <div className={flipped ? "flipped" : ""}>
+        <div className="back" onClick={handleClick}></div>
+        <div className="front">{card.src}</div>
+      </div>
     </div>
   )
 }

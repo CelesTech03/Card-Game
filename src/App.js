@@ -17,7 +17,7 @@ function App() {
   const [choiceTwo, setChoiceTwo] = useState(null)
 
   const shuffleCards = () => {
-    // Doubles cardValues array and then sorts and maps them randomly
+    // Doubles cardValues array and randomizes cards
     const shuffledCards = [...cardValues, ...cardValues]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }))
@@ -27,7 +27,7 @@ function App() {
     setTurns(0)
   }
 
-  // User card choice
+  // Users card choice
   const handleChoice = (card) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
   }
@@ -48,12 +48,10 @@ function App() {
         })
         resetTurn()
       } else {
-        resetTurn()
+        setTimeout(() => resetTurn(), 1000)
       }
     }
   }, [choiceOne, choiceTwo])
-
-  console.log(cards)
 
   // Resets choices and increases number of turns
   const resetTurn = () => {
@@ -69,7 +67,12 @@ function App() {
 
       <div className="card-grid">
         {cards.map(card => (
-          <Card key={card.id} card={card} handleChoice={handleChoice} />
+          <Card
+            key={card.id}
+            card={card}
+            handleChoice={handleChoice}
+            flipped={card === choiceOne || card === choiceTwo || card.matched}
+          />
         ))}
       </div>
     </div>
