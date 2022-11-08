@@ -1,15 +1,25 @@
-.front {
+.card {
+    position: relative;
+}
+
+.card .front {
     display: block;
     background-color: lightblue;
     height: 100px;
     width: 75px;
     border: solid 2px red;
+    transform: rotateY(90deg);
 }
 
-.back {
+.card .back {
     display: block;
     background-color: black;
     height: 100px;
     width: 75px;
     border: solid 2px red;
+    position: absolute;
+}
+
+.flipped .front {
+    transform: rotateY(0deg);
 }
